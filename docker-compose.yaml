@@ -1,0 +1,10 @@
+services:
+  npmctl-com:
+    build: .
+    container_name: npmctl-com
+    restart: unless-stopped
+    labels:
+      site.host: npmctl.com
+      site.kind: mdwrk-lander
+    ports:
+      - "127.0.0.1:0:80"
