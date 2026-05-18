@@ -1,0 +1,24 @@
+---
+apiVersion: npmctl.com/v1
+schemaVersion: 2
+dns_records:
+  - provider: namecheap
+    zone: npmctl.com
+    type: A
+    name: "@"
+    value: 149.255.33.251
+    ttl: 300
+    meta:
+      managed_by: npmctl
+      owner: npmctl-com
+      resource_id: dns.npmctl-com.root-a
+  - provider: namecheap
+    zone: npmctl.com
+    type: CNAME
+    name: "www"
+    value: npmctl.com
+    ttl: 300
+    meta:
+      managed_by: npmctl
+      owner: npmctl-com
+      resource_id: dns.npmctl-com.www-cname

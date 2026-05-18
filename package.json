@@ -11,13 +11,14 @@
     "generate:static": "node scripts/generate-static.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "docker:build": "docker compose build npmctl-com",
-    "dns:plan": "node scripts/namecheap-dns.mjs --plan",
-    "dns:apply": "node scripts/namecheap-dns.mjs --apply",
+    "dns:plan": "npmctl plan desired-state/dns.yaml --owner npmctl-com",
+    "dns:apply": "npmctl apply desired-state/dns.yaml --owner npmctl-com",
     "deploy:dry-run": "node scripts/deploy.mjs --dry-run",
     "deploy": "docker compose -f docker-compose.yaml up -d --build --force-recreate --no-deps npmctl-com",
-    "npmctl:install": "npmctl install",
-    "npmctl:check": "npmctl check",
-    "npmctl:build": "npmctl build"
+    "dns:doctor": "npmctl dns doctor --provider namecheap",
+    "proxy:validate": "npmctl validate desired-state/proxy.yaml",
+    "proxy:plan": "npmctl plan desired-state/proxy.yaml --owner npmctl-com",
+    "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner npmctl-com"
   },
   "dependencies": {
     "@mdwrk/lander-core": "^0.1.2",
