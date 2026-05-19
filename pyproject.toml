@@ -6,8 +6,8 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-    "npmctl>=0.3.8",
-    "npmctl-namecheap>=0.3.8",
+    "npmctl>=0.3.10",
+    "npmctl-namecheap>=0.3.10",
     "ssot-registry>=0.2.18",
 ]
 

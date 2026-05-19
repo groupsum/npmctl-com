@@ -95,15 +95,15 @@ wheels = [
 
 [[package]]
 name = "npmctl"
-version = "0.3.8"
+version = "0.3.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyyaml" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/0f/b0/8d7d46c9a1749807bff9458ec9bd574be3692a0f1575aaf839ac2bca4489/npmctl-0.3.8.tar.gz", hash = "sha256:b69deb3ef523ca2701d40d4588560f8d96c6430a32b74b5ac00e0ad8b23d4a82", size = 44375 }
+sdist = { url = "https://files.pythonhosted.org/packages/9d/82/82e29641c25db7a5204cec258ba451fa3c11d3393c588230d451e7e6556d/npmctl-0.3.10.tar.gz", hash = "sha256:2bbb8452ac21e790ecfb6cba8d4a162e0b0b40a0abdaed26489be3e510aca73d", size = 44885 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/61/ba/220a5b29cf677197418cb005a39b0cbda6b8c2d724c95c57a15a8843e3fa/npmctl-0.3.8-py3-none-any.whl", hash = "sha256:e8024c946b336a4e28ee7da28b9b6c4799c44d9b588bd4e3ed91b8ff5bc5f3ce", size = 56251 },
+    { url = "https://files.pythonhosted.org/packages/f7/47/1d3aa23d52576c67a41971ba62b812ce8ed3c9515cf9804aa13a938a31b1/npmctl-0.3.10-py3-none-any.whl", hash = "sha256:a6b316148aba3f224bd9c2653f0efc38e42ace84f3d5fbe2c1a0bfe503e4c398", size = 56707 },
 ]
 
 [[package]]
@@ -122,21 +122,21 @@ dev = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "npmctl", specifier = ">=0.3.8" },
-    { name = "npmctl-namecheap", specifier = ">=0.3.8" },
+    { name = "npmctl", specifier = ">=0.3.10" },
+    { name = "npmctl-namecheap", specifier = ">=0.3.10" },
     { name = "ssot-registry", specifier = ">=0.2.18" },
 ]
 
 [[package]]
 name = "npmctl-namecheap"
-version = "0.3.8"
+version = "0.3.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f9/9c/92cfa58c68826a3b431c313e31f8587babf4fbf48b666308ea4e263e7eb9/npmctl_namecheap-0.3.8.tar.gz", hash = "sha256:9be41d7d65a73150cd45c114936c7894be95af1e609d95b25f1416170238d3d5", size = 8863 }
+sdist = { url = "https://files.pythonhosted.org/packages/e2/9b/3290abab094af2e5e628cc538630013454ee4ff895ac072f51bc0cb47dee/npmctl_namecheap-0.3.10.tar.gz", hash = "sha256:210096c31eb0b084fb371a3ec62db12cda9161be56be8f91bb6c76491c0a8c6c", size = 9605 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d7/1f/e94f53bc608df685b6b79ab1e38dfc9f9b8d209236479a5949a4bb9ad2fb/npmctl_namecheap-0.3.8-py3-none-any.whl", hash = "sha256:c6da3b8af738676f5c8ca32a722b2c4f56cefa8d19816facd903f6589f2ab3fe", size = 11837 },
+    { url = "https://files.pythonhosted.org/packages/fd/6f/35d23b38aaf0ef3587275561680136d3f6ec7a34abf3601f1d13537db9bf/npmctl_namecheap-0.3.10-py3-none-any.whl", hash = "sha256:d16bdf1033013fc4ce79a6fe4eb91bba3529e24b8a0e66422aff1cf64ed1e680", size = 12390 },
 ]
 
 [[package]]

@@ -45,7 +45,7 @@ jobs:
           docker rm -f npmctl-com || true
           docker-compose -f docker-compose.yaml up -d --no-build --force-recreate --no-deps npmctl-com
       - name: Install npmctl from PyPI
-        run: python -m pip install --upgrade "npmctl>=0.3.8" "npmctl-namecheap>=0.3.8"
+        run: python -m pip install --upgrade "npmctl>=0.3.10" "npmctl-namecheap>=0.3.10"
       - name: Validate npmctl orchestration secrets
         shell: bash
         run: |
