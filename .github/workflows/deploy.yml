@@ -57,6 +57,13 @@ jobs:
             fi
           done
           exit ${missing}
+      - name: Diagnose npmctl API authentication
+        shell: bash
+        run: |
+          echo "NPM_BASE_URL length=${#NPM_BASE_URL}"
+          echo "NPM_IDENTITY length=${#NPM_IDENTITY}"
+          echo "NPM_SECRET length=${#NPM_SECRET}"
+          npmctl doctor
       - name: Render DNS desired state
         shell: bash
         run: |
