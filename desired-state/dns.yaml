@@ -14,6 +14,16 @@ dns_records:
       resource_id: dns.npmctl-com.root-a
   - provider: namecheap
     zone: npmctl.com
+    type: A
+    name: "*"
+    value: __SITE_SERVER_IP__
+    ttl: 300
+    meta:
+      managed_by: npmctl
+      owner: npmctl-com
+      resource_id: dns.npmctl-com.wildcard-a
+  - provider: namecheap
+    zone: npmctl.com
     type: CNAME
     name: "www"
     value: npmctl.com
