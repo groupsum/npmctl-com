@@ -8,6 +8,7 @@ dependencies = []
 dev = [
     "npmctl>=0.3.8",
     "npmctl-namecheap>=0.3.8",
+    "ssot-registry>=0.2.18",
 ]
 
 [tool.uv]
