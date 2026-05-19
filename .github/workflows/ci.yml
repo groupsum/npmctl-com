@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install npmctl from PyPI
-        run: python -m pip install --upgrade npmctl npmctl-namecheap
+        run: python -m pip install --upgrade "npmctl>=0.3.8" "npmctl-namecheap>=0.3.8"
       - run: npm ci
       - run: npm run check
       - run: npm run build
