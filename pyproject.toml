@@ -1,0 +1,14 @@
+[project]
+name = "npmctl-com"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "npmctl>=0.3.8",
+    "npmctl-namecheap>=0.3.8",
+]
+
+[tool.uv]
+package = false
