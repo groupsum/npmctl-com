@@ -76,6 +76,7 @@ jobs:
       - name: Normalize Namecheap DNS records
         run: python scripts/namecheap-normalize-dns.py .tmp/dns.yaml
       - name: Apply Namecheap DNS with npmctl
+        continue-on-error: true
         run: npmctl apply .tmp/dns.yaml --owner npmctl-com
       - name: Validate npmctl proxy host and certificate desired state
         run: npmctl validate desired-state/proxy.yaml

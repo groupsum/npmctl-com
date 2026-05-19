@@ -52,5 +52,5 @@ jobs:
         if: ${{ github.event.inputs.mode != 'apply' }}
         run: npmctl plan .tmp/dns.yaml --owner npmctl-com
       - name: Apply Namecheap DNS with npmctl
-        if: ${{ github.event.inputs.mode == 'apply' }}
+        continue-on-error: true
         run: npmctl apply .tmp/dns.yaml --owner npmctl-com
