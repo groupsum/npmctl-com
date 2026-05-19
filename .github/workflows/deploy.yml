@@ -88,3 +88,34 @@ jobs:
         run: npmctl plan desired-state/proxy.yaml --owner npmctl-com
       - name: Apply Nginx Proxy Manager proxy host and certificates with npmctl
         run: npmctl apply desired-state/proxy.yaml --owner npmctl-com
+      - name: Verify public HTTPS and HTTP redirect
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const { spawnSync } = require('node:child_process');
+          const manifest = JSON.parse(fs.readFileSync('site.manifest.json', 'utf8'));
+          const primary = manifest.host || manifest.site;
+          const hosts = [primary];
+          if (!primary.startsWith('docs.') && !primary.startsWith('www.')) {
+            hosts.push(`www.${primary}`);
+          }
+          let failed = false;
+          for (const host of hosts) {
+            const https = spawnSync('curl', ['-I', '-sS', '--max-time', '25', '-o', '/dev/null', '-w', '%{http_code}|%{errormsg}', `https://${host}/`], { encoding: 'utf8' });
+            const httpsOut = `${https.stdout || ''}${https.stderr || ''}`.trim();
+            const httpsCode = Number((https.stdout || '').split('|')[0]);
+            console.log(`${host} HTTPS ${httpsOut}`);
+            if (https.status !== 0 || httpsCode !== 200 || httpsOut.includes('502') || /timed out|Could not resolve|Failed to connect/i.test(httpsOut)) {
+              failed = true;
+            }
+            const http = spawnSync('curl', ['-I', '-sS', '--max-time', '25', '-o', '/dev/null', '-w', '%{http_code}|%{redirect_url}|%{errormsg}', `http://${host}/`], { encoding: 'utf8' });
+            const httpOut = `${http.stdout || ''}${http.stderr || ''}`.trim();
+            const httpCode = Number((http.stdout || '').split('|')[0]);
+            console.log(`${host} HTTP ${httpOut}`);
+            if (http.status !== 0 || httpCode < 300 || httpCode >= 400 || httpOut.includes('502') || /timed out|Could not resolve|Failed to connect/i.test(httpOut)) {
+              failed = true;
+            }
+          }
+          if (failed) process.exit(1);
+          NODE
