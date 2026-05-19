@@ -73,6 +73,8 @@ jobs:
         run: npmctl validate .tmp/dns.yaml
       - name: Validate Namecheap provider
         run: npmctl dns doctor --provider namecheap
+      - name: Normalize Namecheap DNS records
+        run: python scripts/namecheap-normalize-dns.py .tmp/dns.yaml
       - name: Apply Namecheap DNS with npmctl
         run: npmctl apply .tmp/dns.yaml --owner npmctl-com
       - name: Validate npmctl proxy host and certificate desired state
