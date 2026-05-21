@@ -51,7 +51,8 @@ footer {
 }
 
 .site-header nav,
-footer div {
+footer div,
+.compact-links {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -59,7 +60,8 @@ footer div {
 }
 
 .site-header nav a,
-footer a {
+footer a,
+.compact-links a {
   color: #c8d5ea;
   font-size: 14px;
   text-decoration: none;
@@ -117,6 +119,14 @@ p {
   padding-top: 34px;
 }
 
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
 .section-heading h2 {
   font-size: 26px;
 }
@@ -161,6 +171,75 @@ p {
   text-decoration: none;
 }
 
+.article-content {
+  display: grid;
+  gap: 28px;
+}
+
+.article-section {
+  display: grid;
+  gap: 14px;
+}
+
+.article-section h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.article-section p {
+  color: #c5cedd;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.section-list,
+.faq-list,
+.proof-grid,
+.package-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.section-card,
+.faq-item,
+.proof-card,
+.package-card,
+.article-callout {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px 20px;
+}
+
+.section-card strong,
+.faq-item strong,
+.proof-card strong,
+.package-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.proof-card span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #60a5fa;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.package-card code {
+  color: #eff6ff;
+}
+
+.compact-links {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 42px;
+  padding-top: 28px;
+}
+
 footer {
   min-height: 112px;
   display: flex;
@@ -173,6 +252,22 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+.footer-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-copy small {
+  color: #91a2ba;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  justify-content: flex-end;
 }
 
 @media (max-width: 720px) {

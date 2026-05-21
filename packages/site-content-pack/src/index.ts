@@ -89,6 +89,53 @@ export const siteContent = {
           { name: "DNS plan", description: "Render the Namecheap record plan.", install: "npm run dns:plan", api: ["npmctl plan desired-state/dns.yaml"] }
         ] }
       ]
+    },
+    {
+      slug: "/articles/desired-state-beats-click-ops-for-site-operations/",
+      kind: "feature",
+      title: "Desired state beats click-ops for site operations | npmctl",
+      description: "Why npmctl treats DNS, proxy, certificates, and deploy state as planable, reviewable artifacts instead of manual dashboard work.",
+      h1: "Desired state beats click-ops for site operations.",
+      intro: "npmctl is most useful when it reduces operational drift instead of merely wrapping commands. The repo already reflects that viewpoint: DNS, proxy, build, and deploy work are represented as named scripts over declared files so operators can plan changes before they mutate live state.",
+      sections: [
+        { id: "lane", kind: "feature_detail", title: "The command surface is valuable because it narrows operator ambiguity", body: "A command surface matters when it makes the intended state legible. In this repository, npmctl is positioned around package builds, DNS workflows, proxy host plans, certificate-related publication, and Docker-backed deploys. That is stronger than a generic automation story because the artifacts being changed are visible first.", items: [
+          { title: "Planned DNS changes", description: "DNS work is represented as desired state rather than remembered manual edits." },
+          { title: "Planned proxy changes", description: "Proxy host updates are reviewed as file-backed plans before apply." },
+          { title: "One operator lane", description: "Build, check, DNS, proxy, and deploy commands live beside each other in the same repo." }
+        ] },
+        { id: "proof", kind: "proof_matrix", title: "Repository signals that support this claim", items: [
+          { claim: "Operator state is file-backed.", status: "observed", evidence: "The repo includes desired-state DNS and proxy documents for npmctl.com." },
+          { claim: "The command lane is named.", status: "observed", evidence: "Scripts expose `check`, `build`, `dns:plan`, `proxy:plan`, and deploy flows directly." },
+          { claim: "Publication does not rely on hidden context.", status: "observed", evidence: "Docker service naming, workflows, and desired-state inputs are all local repo surfaces." }
+        ] },
+        { id: "faq", kind: "faq", title: "Why this matters", items: [
+          { question: "Why emphasize desired state?", answer: "Because planned state is easier to review, reason about, and repeat than click-driven operator memory." },
+          { question: "What does npmctl improve?", answer: "It reduces ambiguity around what will change in DNS, proxy configuration, and site publication." },
+          { question: "Who benefits?", answer: "Teams that want repeatable operator workflows without treating deployment state as an undocumented side channel." }
+        ] }
+      ]
+    },
+    {
+      slug: "/articles/from-check-to-deploy-in-one-operator-lane/",
+      kind: "feature",
+      title: "From check to deploy in one operator lane | npmctl",
+      description: "How npmctl connects validation, build, DNS planning, proxy planning, and deploy into a single reviewable operator path.",
+      h1: "From check to deploy in one operator lane.",
+      intro: "The npmctl.com repository is a good example of the product story because it keeps validation, build, DNS planning, proxy planning, and deploy in one place. That means the published site is also a proof surface for the operating model npmctl is trying to promote.",
+      sections: [
+        { id: "ownership", kind: "feature_detail", title: "The repo itself is an operator workflow specimen", body: "Instead of describing a command-center pattern abstractly, the repository runs the pattern on its own publication surface. Operators can inspect the check/build steps, the desired-state files, the Docker target, and the workflow lanes that publish the site.", items: [
+          { title: "Named Docker target", description: "The repo deploys the `npmctl-com` service directly." },
+          { title: "Workflow split by responsibility", description: "CI, DNS, and deploy workflows make the lane easier to reason about." },
+          { title: "Repo-owned proof", description: "The site that describes npmctl is published through the same explicit workflow model it advocates." }
+        ] },
+        { id: "commands", kind: "package_grid", title: "The operator lane in commands", packages: [
+          { name: "Check", description: "Verifies the content-pack and application surface.", install: "npm run check", api: ["npm run check"] },
+          { name: "Build", description: "Builds the static site artifact.", install: "npm run build", api: ["npm run build"] },
+          { name: "DNS plan", description: "Renders intended DNS state before apply.", install: "npm run dns:plan", api: ["npmctl plan desired-state/dns.yaml"] },
+          { name: "Proxy plan", description: "Renders intended proxy host state before apply.", install: "npm run proxy:plan", api: ["npmctl plan desired-state/proxy.yaml"] }
+        ] },
+        { id: "cta", kind: "cta", title: "Use the repo as the example", body: "npmctl is easier to understand when the repo itself is read as an end-to-end operator lane. The publication surface is part of the product argument, not separate from it." }
+      ]
     }
   ]
 };
