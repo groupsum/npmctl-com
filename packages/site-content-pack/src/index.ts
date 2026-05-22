@@ -14,6 +14,12 @@ export const siteContent = {
       { label: "Proof", href: "/proof/" },
       { label: "GitHub", href: "https://github.com/groupsum/npmctl-com" }
     ],
+    compactLinks: [
+      { label: "Proof", href: "/proof/" },
+      { label: "GitHub", href: "https://github.com/groupsum/npmctl-com" },
+      { label: "Desired state ops", href: "/articles/desired-state-beats-click-ops-for-site-operations/" },
+      { label: "Operator lane", href: "/articles/from-check-to-deploy-in-one-operator-lane/" }
+    ],
     cta: { label: "Get started", href: "/platform/" }
   },
   footer: {
@@ -39,7 +45,7 @@ export const siteContent = {
       h1: "npmctl",
       intro: "npmctl coordinates package builds, releases, DNS workflows, and deployment operations through a governed command surface. The site packages product positioning, structured metadata, and deployment evidence in a standalone MdWrk lander repository.",
       sections: [
-        { id: "hero", kind: "hero", eyebrow: "npmctl", title: "Command-center automation for npm package operations.", subtitle: "npmctl coordinates package builds, releases, DNS workflows, and deployment operations through a governed command surface." },
+        { id: "hero", kind: "hero", eyebrow: "Package operations", title: "Command-center automation for npm package operations.", subtitle: "npmctl coordinates package builds, releases, DNS workflows, and deployment operations through a governed command surface." },
         { id: "platform", kind: "feature_grid", title: "What this site owns", items: [
           { title: "Product narrative", description: "Canonical product messaging, audience positioning, and calls to action for npmctl.com." },
           { title: "Structured discovery", description: "Search, assistant, social, and linked-data metadata generated from the content pack." },

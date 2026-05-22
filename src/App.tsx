@@ -10,10 +10,9 @@ const normalizePath = (value: string) => {
 
 const homePage = siteContent.pages.find((page) => normalizePath(page.slug) === "/") ?? siteContent.pages[0];
 const articlePages = siteContent.pages.filter((page) => normalizePath(page.slug).startsWith("/articles/"));
-const compactLinks = ["/platform/", "/proof/", ...articlePages.map((page) => normalizePath(page.slug))]
-  .map((slug) => siteContent.pages.find((page) => normalizePath(page.slug) === slug))
-  .filter((page): page is SitePage => Boolean(page))
-  .slice(0, 4);
+const homeHeroSection = homePage?.sections.find((section) => section.kind === "hero");
+const homeEyebrow = homeHeroSection && "eyebrow" in homeHeroSection ? homeHeroSection.eyebrow : siteContent.product.category;
+const compactLinks = siteContent.nav.compactLinks ?? [];
 const currentYear = new Date().getUTCFullYear();
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -65,7 +64,7 @@ function HomePage() {
   return (
     <SiteChrome>
       <section className="home-hero" aria-labelledby="hero-title">
-        <p className="eyebrow">{siteContent.product.name}</p>
+        <p className="eyebrow">{homeEyebrow}</p>
         <h1 id="hero-title">{homePage?.h1 || siteContent.product.name}</h1>
         <p>{homePage?.description || siteContent.product.description}</p>
       </section>
@@ -87,8 +86,8 @@ function HomePage() {
       </section>
 
       <section className="compact-links" aria-label="Site links">
-        {compactLinks.map((page) => (
-          <a key={page.slug} href={page.slug}>{page.h1}</a>
+        {compactLinks.map((link) => (
+          <a key={link.href} href={link.href}>{link.label}</a>
         ))}
       </section>
     </SiteChrome>
