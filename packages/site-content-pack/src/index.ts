@@ -12,11 +12,11 @@ export const siteContent = {
     primary: [
       { label: "Platform", href: "/platform/" },
       { label: "Proof", href: "/proof/" },
-      { label: "GitHub", href: "https://github.com/groupsum/npmctl-com" }
+      { label: "GitHub", href: "https://github.com/groupsum/npmctl" }
     ],
     compactLinks: [
       { label: "Proof", href: "/proof/" },
-      { label: "GitHub", href: "https://github.com/groupsum/npmctl-com" },
+      { label: "GitHub", href: "https://github.com/groupsum/npmctl" },
       { label: "Desired state ops", href: "/articles/desired-state-beats-click-ops-for-site-operations/" },
       { label: "Operator lane", href: "/articles/from-check-to-deploy-in-one-operator-lane/" }
     ],
@@ -25,7 +25,7 @@ export const siteContent = {
   footer: {
     note: "npmctl is maintained by groupsum.",
     links: [
-      { label: "GitHub", href: "https://github.com/groupsum/npmctl-com" }
+      { label: "GitHub", href: "https://github.com/groupsum/npmctl" }
     ]
   },
   ai: {
