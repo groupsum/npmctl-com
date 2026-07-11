@@ -610,7 +610,7 @@ export default function App() {
                     </a>
 
                     <a
-                      href="https://discord.gg/npmctl"
+                      href="https://discord.gg/MwAhAK2bsd"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-10 items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-900"

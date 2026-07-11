@@ -124,7 +124,7 @@ export default function Footer({ setRoute }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/npmctl"
+                  href="https://discord.gg/MwAhAK2bsd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-brand-green transition-colors inline-flex items-center gap-1"
