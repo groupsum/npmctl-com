@@ -1,0 +1,71 @@
+# npmctl (mdwrk) — GitOps for Nginx Proxy Manager
+
+Declarative proxy, certificate, access list, and DNS state controller for Nginx Proxy Manager (NPM). Reconcile files safely with dry-runs, schema validations, and owner-scoped change plans.
+
+## Core Information
+
+- **Repository**: [https://github.com/groupsum/npmctl](https://github.com/groupsum/npmctl)
+- **PyPI Package**: [https://pypi.org/project/npmctl/](https://pypi.org/project/npmctl/)
+- **Maturity**: Beta (`v0.3.10`)
+- **License**: Apache-2.0
+- **Supported Platforms**: Linux, macOS, Windows (Python 3.10 to 3.14)
+
+---
+
+## Key Features
+
+1. **Declarative State**: Define your proxy hosts, SSL certs, and DNS records in a clean `desired-state.yaml` configuration.
+2. **Deterministic CLI Workflow**: Enforces a strict pipeline order: `validate` -> `plan` -> `apply`.
+3. **Owner-Scoped Isolation**: Ensures multi-tenant or multi-owner workspaces don't accidentally stomp on other operators' configuration endpoints.
+4. **Dry-Run Readiness**: Complete capability check and simulated run output with safe exit-codes.
+5. **Multi-Cloud DNS Extensions**: Modular providers for Cloudflare, Route 53, DigitalOcean, GoDaddy, and Namecheap.
+
+---
+
+## Quick Start
+
+### 1. Installation
+
+```bash
+# Recommended installation via pipx or uv
+pipx install npmctl
+```
+
+### 2. Configuration (`desired-state.yaml`)
+
+```yaml
+version: "mdwrk/v1alpha1"
+owner: "frontend-team"
+resources:
+  - type: proxy-host
+    name: "main-landing"
+    domain_names: ["npmctl.com", "www.npmctl.com"]
+    forward_scheme: "http"
+    forward_host: "10.0.0.45"
+    forward_port: 80
+    ssl_forced: true
+    certificate_id: "dns-challenge-cert"
+
+  - type: certificate
+    name: "dns-challenge-cert"
+    provider: "cloudflare"
+    domain_names: ["npmctl.com", "*.npmctl.com"]
+```
+
+### 3. Execution
+
+```bash
+# Verify credentials and schema
+npmctl validate --config desired-state.yaml
+
+# Generate structural execution plan
+npmctl plan --config desired-state.yaml --out execution.plan
+
+# Safely reconcile live state
+npmctl apply --plan execution.plan
+```
+
+---
+
+## Reference & Full Context
+For deep-dive documentation on all commands, safety models, schemas, and API ranges, read [Full LLMs documentation](/llms-full.txt).

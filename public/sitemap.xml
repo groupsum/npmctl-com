@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-home.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-product.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-safety.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-providers.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-docs.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://npmctl.com/sitemap-releases.xml</loc>
+      <lastmod>2026-07-11</lastmod>
+   </sitemap>
+</sitemapindex>

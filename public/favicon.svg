@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="128" fill="#020617"/>
+  <!-- Decorative grid of dots (tech/developer vibe) -->
+  <circle cx="128" cy="128" r="8" fill="#1e293b"/>
+  <circle cx="256" cy="128" r="8" fill="#1e293b"/>
+  <circle cx="384" cy="128" r="8" fill="#1e293b"/>
+  <circle cx="128" cy="256" r="8" fill="#1e293b"/>
+  <circle cx="384" cy="256" r="8" fill="#1e293b"/>
+  <circle cx="128" cy="384" r="8" fill="#1e293b"/>
+  <circle cx="256" cy="384" r="8" fill="#1e293b"/>
+  <circle cx="384" cy="384" r="8" fill="#1e293b"/>
+  
+  <!-- Outer glowing network circle -->
+  <circle cx="256" cy="256" r="160" stroke="#10b981" stroke-width="12" fill="none" stroke-dasharray="16 24" opacity="0.4"/>
+  
+  <!-- Inner terminal / CLI prompt icon -->
+  <path d="M 180 170 L 250 256 L 180 342" fill="none" stroke="#10b981" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="270" y1="340" x2="330" y2="340" stroke="#34d399" stroke-width="28" stroke-linecap="round"/>
+</svg>

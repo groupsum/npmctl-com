@@ -1,0 +1,65 @@
+# npmctl (mdwrk) Detailed Technical Documentation
+
+This document contains the complete technical specification of `npmctl` (GitOps controller for Nginx Proxy Manager). This is optimized for LLMs, code generation assistants, and automated audit tools.
+
+---
+
+## 1. Safety & Architecture Rules
+
+`npmctl` runs safe, declarative GitOps reconciling for Nginx Proxy Manager (NPM). It avoids common issues such as manual mouse clicks, out-of-order execution, and configuration drift.
+
+### Enforced Principles
+
+1. **Owner-Scoped Safety**:
+   - Every `desired-state.yaml` file declares an `owner` property (e.g., `owner: platform-devs`).
+   - `npmctl` tags reconciled items in the NPM database with this owner string.
+   - Foreign-owned items (items with a different owner string) are **strictly immutable** and cannot be updated or deleted by this configuration scope.
+   - Unmanaged items (items in Nginx Proxy Manager with no ownership metadata) are treated as **potential collisions**. `npmctl` will throw a validation warning or block deployment unless explicit adoption arguments are passed.
+
+2. **Deterministic CLI Workflow**:
+   - **`validate`**: Performs syntax checks and ensures references (like `certificate_id` inside a `proxy-host` definition) map to defined certificates or valid external IDs.
+   - **`plan`**: Computes the exact delta of actions (`CREATE`, `UPDATE`, `DELETE`, `NOOP`) required to align actual state with desired state.
+   - **`apply`**: Executes actions sequentially. Requires a valid planned state file as an input parameter.
+
+3. **CI/CD Safety Gates (Deterministic Exit Codes)**:
+   - `Exit 0`: Action completed successfully with no drift.
+   - `Exit 1`: General execution error or connection failure.
+   - `Exit 2`: Desired state does not pass JSON Schema validation.
+   - `Exit 3`: Resource ownership conflict / unauthorized mutation of foreign or unmanaged host.
+   - `Exit 4`: Missing third-party API token or capability check failure.
+
+---
+
+## 2. Resource Schema Specification
+
+### Proxy Host (`type: proxy-host`)
+Configures routing and forwarding in NPM.
+
+| Attribute | Type | Description |
+| :--- | :--- | :--- |
+| `name` | String | Unique identifier within configuration scope. |
+| `domain_names` | Array[String] | Server names to listen for (e.g. `["example.com"]`). |
+| `forward_scheme` | String | `http` or `https`. |
+| `forward_host` | String | Destination IP/domain. |
+| `forward_port` | Integer | Destination port (1-65535). |
+| `ssl_forced` | Boolean | Redirect HTTP to HTTPS. |
+| `certificate_id` | String | Name of certificate resource defined in config, or live integer ID. |
+| `access_list_id`| String/Int | Optional ACL link. |
+
+### DNS Provider Extensions (`type: dns-record`)
+Integrates external multi-cloud DNS hosting. Installed as independent packages.
+
+Available extensions:
+- `npmctl-cloudflare`: Cloudflare API integration. Uses `CLOUDFLARE_API_TOKEN` environment variable.
+- `npmctl-route53`: AWS Route 53 integration. Uses `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+- `npmctl-digitalocean`: DigitalOcean token. Uses `DIGITALOCEAN_TOKEN`.
+- `npmctl-godaddy`: GoDaddy developer credentials. Uses `GODADDY_API_KEY` and `GODADDY_API_SECRET`.
+- `npmctl-namecheap`: Namecheap API credentials. Uses `NAMECHEAP_API_USER` and `NAMECHEAP_API_KEY`.
+
+---
+
+## 3. Configuration Best Practices
+
+- **Never Hardcode Secrets**: Utilize environment variable interpolation inside `desired-state.yaml` using standard shell expansion `"${SECRET_VAR_NAME}"`.
+- **Always Save Plans**: Run `npmctl plan --out execution.plan` in CI before applying, allowing human reviewers or separate security filters to audit actions.
+- **Set Up API Proxies**: When running under restricted server/container bounds, routing actual Nginx Proxy Manager requests through `/api/*` proxies keeps central authorization keys safe.

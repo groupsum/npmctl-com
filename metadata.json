@@ -1,0 +1,6 @@
+{
+  "name": "npmctl",
+  "description": "GitOps controller for Nginx Proxy Manager (NPM). Reconcile declarative proxy, certificate, and DNS state safely with owner-scoped plans.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,24 @@
+# Robots.txt for npmctl - GitOps Safety for Nginx Proxy Manager
+# Enriched SEO indexation rules for search engines and AI agents
+
+User-agent: *
+Allow: /
+
+# Specifically denote the nested Sitemap Index
+Sitemap: https://npmctl.com/sitemap.xml
+
+# Instructions for LLM and AI Crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
