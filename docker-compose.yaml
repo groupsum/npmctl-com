@@ -9,11 +9,15 @@ services:
     expose:
       - "80"
     networks:
-      dockerwp:
+      npmctl-com-private: {}
+      portwyrm-edge:
         aliases:
           - npmctl-com
 
 networks:
-  dockerwp:
-    name: dockerwp
+  npmctl-com-private:
+    name: npmctl-com-private
+    internal: true
+  portwyrm-edge:
+    name: portwyrm-edge
     external: true
