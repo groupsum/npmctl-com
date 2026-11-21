@@ -27,4 +27,4 @@ jobs:
         run: npm run proxy:target-check
       - name: Validate npmctl desired state
         run: npmctl validate desired-state
-      - run: npm run docker:build
+      - run: docker compose build
