@@ -12,8 +12,8 @@ if (!composeLines.some((line) => /^\s*expose:\s*(?:#.*)?$/.test(line)) || !compo
   throw new Error("docker-compose.yaml must expose port 80 to the Docker network");
 }
 
-if (!/^\s{4}networks:\s*(?:#.*)?$/m.test(compose) || !/^\s{6}dockerwp:\s*(?:#.*)?$/m.test(compose) || !/^\s{4}name:\s*dockerwp\s*(?:#.*)?$/m.test(compose) || !/^\s{4}external:\s*true\s*(?:#.*)?$/m.test(compose)) {
-  throw new Error("docker-compose.yaml must attach the site service to the external dockerwp network");
+if (!/^\s{4}networks:\s*(?:#.*)?$/m.test(compose) || !/^\s{6}portwyrm-edge:\s*(?:#.*)?$/m.test(compose) || !/^\s{4}name:\s*portwyrm-edge\s*(?:#.*)?$/m.test(compose) || !/^\s{4}external:\s*true\s*(?:#.*)?$/m.test(compose)) {
+  throw new Error("docker-compose.yaml must attach the site service to the external portwyrm-edge network");
 }
 
 const containerMatch = compose.match(/^\s*container_name:\s*([^\r\n#]+)/m);
@@ -37,4 +37,4 @@ for (const forwardHost of forwardMatches) {
   }
 }
 
-console.log(`proxy target ok: ${containerName} on dockerwp with exposed port 80`);
+console.log(`proxy target ok: ${containerName} on portwyrm-edge with exposed port 80`);
